@@ -1,0 +1,203 @@
+/* Islamabad Green Spaces Web GIS — responsive styling */
+:root {
+  color-scheme: light;
+  --green-900: #163b2a;
+  --green-800: #24563d;
+  --green-700: #2f704d;
+  --green-100: #e8f2eb;
+  --ink: #1c2922;
+  --muted: #5e6d64;
+  --line: #dce5df;
+  --surface: #ffffff;
+  --page: #f3f6f4;
+  --warning: #8a4b08;
+  --danger: #a12d2d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.55;
+}
+
+.site-header {
+  color: white;
+  background: linear-gradient(120deg, var(--green-900), var(--green-700));
+  padding: 34px 20px 38px;
+}
+
+.header-content, .page-content, .site-footer {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.12;
+}
+
+.subtitle {
+  max-width: 720px;
+  margin: 14px 0 0;
+  color: #e7f2eb;
+  font-size: 1.05rem;
+}
+
+.page-content { padding: 22px 0 30px; }
+
+.intro-panel, .toolbar, .map-card, .info-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(20, 48, 32, 0.045);
+}
+
+.intro-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+
+h2 { margin: 0 0 8px; font-size: 1.12rem; }
+.intro-panel p, .info-card p { margin: 0; color: var(--muted); }
+.source-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--green-100);
+  color: var(--green-900);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+.status-dot { width: 9px; height: 9px; border-radius: 50%; background: #27834f; }
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(180px, 0.7fr) auto;
+  gap: 14px;
+  align-items: end;
+  padding: 16px;
+}
+
+label { display: flex; flex-direction: column; gap: 6px; font-size: 0.86rem; font-weight: 700; }
+input, select, button {
+  min-height: 44px;
+  border: 1px solid #b8c7bd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+input:focus, select:focus, button:focus-visible, a:focus-visible {
+  outline: 3px solid #8ab89b;
+  outline-offset: 2px;
+}
+.primary-button {
+  border-color: var(--green-800);
+  background: var(--green-800);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.primary-button:hover { background: var(--green-900); }
+.primary-button:disabled { opacity: 0.65; cursor: wait; }
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 2px 4px;
+}
+.status-message, .feature-count { margin: 8px 0; font-size: 0.9rem; }
+.status-message { color: var(--muted); }
+.status-message.error { color: var(--danger); }
+.status-message.warning { color: var(--warning); }
+.feature-count { color: var(--green-900); font-weight: 700; white-space: nowrap; }
+
+.map-card { position: relative; overflow: hidden; padding: 8px; }
+#map {
+  height: min(66vh, 650px);
+  min-height: 420px;
+  width: 100%;
+  border-radius: 9px;
+  background: #e6ece8;
+  z-index: 1;
+}
+.map-legend {
+  position: absolute;
+  z-index: 500;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.legend-marker {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #287c4c;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #1b5935;
+}
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.info-card { padding: 20px; }
+.info-card ol { margin: 8px 0 0; padding-left: 22px; color: var(--muted); }
+.info-card p + p { margin-top: 8px; }
+
+.site-footer {
+  padding: 18px 0 28px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+.site-footer p { margin: 4px 0; }
+a { color: var(--green-800); }
+.site-footer a { font-weight: 700; }
+
+.popup-title { display: block; margin-bottom: 5px; font-size: 1rem; }
+.popup-detail { margin: 3px 0; }
+.popup-coordinates { color: #52645a; font-size: 0.8rem; }
+
+@media (max-width: 760px) {
+  .intro-panel { align-items: flex-start; flex-direction: column; }
+  .toolbar { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  #map { min-height: 380px; height: 60vh; }
+}
+
+@media (max-width: 420px) {
+  .header-content, .page-content, .site-footer { width: min(100% - 20px, 1120px); }
+  .site-header { padding: 26px 10px 30px; }
+  .status-row { align-items: flex-start; flex-direction: column; gap: 0; }
+}

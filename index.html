@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An API-based Web GIS for exploring parks and green spaces in Islamabad, Pakistan.">
+  <title>Islamabad Green Spaces Web GIS</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <p class="eyebrow">API-BASED WEB GIS</p>
+      <h1>Islamabad Green Spaces</h1>
+      <p class="subtitle">Explore parks, gardens, playgrounds, and recreational areas in Islamabad, Pakistan.</p>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="intro-panel" aria-labelledby="about-title">
+      <div>
+        <h2 id="about-title">Study area</h2>
+        <p>This map focuses on Islamabad and nearby mapped green spaces. Features are retrieved live from OpenStreetMap through the Overpass API; coverage and names depend on community mapping.</p>
+      </div>
+      <div class="source-pill"><span class="status-dot"></span> Live OpenStreetMap data</div>
+    </section>
+
+    <section class="toolbar" aria-label="Map search and filters">
+      <label class="search-field">
+        <span>Search by name</span>
+        <input id="search" type="search" placeholder="e.g. Fatima Jinnah Park" autocomplete="off">
+      </label>
+      <label class="category-field">
+        <span>Feature type</span>
+        <select id="category">
+          <option value="all">All green spaces</option>
+          <option value="park">Parks</option>
+          <option value="garden">Gardens</option>
+          <option value="playground">Playgrounds</option>
+          <option value="recreation_ground">Recreation grounds</option>
+        </select>
+      </label>
+      <button id="loadButton" class="primary-button" type="button">Load / refresh data</button>
+    </section>
+
+    <section class="status-row" aria-live="polite">
+      <p id="status" class="status-message">Ready to load map features.</p>
+      <p id="count" class="feature-count">0 features</p>
+    </section>
+
+    <section class="map-card" aria-label="Interactive map">
+      <div id="map" role="application" aria-label="Interactive Leaflet map of Islamabad green spaces"></div>
+      <div class="map-legend">
+        <span class="legend-marker" aria-hidden="true"></span>
+        <span>Mapped green space</span>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <article class="info-card">
+        <h2>How to use the map</h2>
+        <ol>
+          <li>Wait for the API data to load.</li>
+          <li>Search for a place by name or select a feature type.</li>
+          <li>Click a marker to view its name, type, and coordinates.</li>
+          <li>Use the refresh button if the public API is temporarily unavailable.</li>
+        </ol>
+      </article>
+      <article class="info-card">
+        <h2>API and data fields</h2>
+        <p><strong>API:</strong> Overpass API (OpenStreetMap)</p>
+        <p><strong>Fields used:</strong> name, leisure, latitude, longitude, and center coordinates for mapped areas.</p>
+        <p><strong>Access:</strong> Public endpoint; no API key is required for this demonstration. Please use it responsibly.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Geographic data retrieved from the <a href="https://overpass-api.de/" target="_blank" rel="noopener noreferrer">Overpass API</a>.</p>
+    <p>Map data and tiles © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
+    <p><a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a> mapping library.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
+</html>
